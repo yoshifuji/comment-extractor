@@ -1,0 +1,24 @@
+  //セッション開始
+  session_start();
+
+  //ライブラリー
+
+  //引数チェック
+  if ($_POST['page'] < 1)
+    $_POST['page'] = 1;
+
+  //ヘッダー出力
+  header("Content-Type: application/json; charset=UTF-8");
+
+  //データベース接続
+
+  //ログインチェック
+  if (!login_check($mysqli, '商品検索画面の検索処理（/home/action/search.php）', null, null, null, null, null, null)) {
+    die('{"error": "not login"}');
+  }
+
+  //店舗情報、選択商品情報復号
+  $store_information = crypt_code_to_store_information($_POST['code']);
+  }
+
+
